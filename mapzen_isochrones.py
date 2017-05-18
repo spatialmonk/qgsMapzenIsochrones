@@ -21,14 +21,41 @@
  ***************************************************************************/
 """
 from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+from PyQt4 import QtCore
+#from PyQt4.QtCore import *
+from PyQt4.QtGui import QAction, QIcon
+#from PyQt4.QtGui import *
+# Initialize Qt resources from file resources.py
+import resources
+# Import the code for the dialog
+import isochrone_gen
+#import mapzen_isochrones
+from mapzen_isochrones_dialog import MapzenIsochronesDialog
+
+import os.path
+
+
+from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+from PyQt4.QtGui import QAction, QIcon
+from PyQt4 import QtCore
+from qgis.core import *
+import qgis.utils
+
+from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from PyQt4.QtGui import QAction, QIcon
 # Initialize Qt resources from file resources.py
 import resources
 # Import the code for the dialog
 from mapzen_isochrones_dialog import MapzenIsochronesDialog
 import os.path
+import urllib2
+from PyQt4.QtGui import QMessageBox
+import requests
+from osgeo import ogr
+import json
 
-import isochrone_gen
+
+
 
 class MapzenIsochrones:
     """QGIS Plugin Implementation."""
@@ -42,6 +69,7 @@ class MapzenIsochrones:
         :type iface: QgsInterface
         """
         # Save reference to the QGIS interface
+        self.dlg = MapzenIsochronesDialog()
         self.iface = iface
         # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
@@ -51,6 +79,13 @@ class MapzenIsochrones:
             self.plugin_dir,
             'i18n',
             'MapzenIsochrones_{}.qm'.format(locale))
+
+			
+        #Populate comboBox_2 with all point file layers
+        for layer in qgis.utils.iface.legendInterface().layers():
+                layerType = layer.type()
+                if layerType == QgsMapLayer.VectorLayer and layer.wkbType() == QGis.WKBPoint:
+                    self.dlg.comboBox_2.addItem(layer.name())
 
         if os.path.exists(locale_path):
             self.translator = QTranslator()
@@ -66,6 +101,13 @@ class MapzenIsochrones:
         # TODO: We are going to let the user set this up in a future iteration
         self.toolbar = self.iface.addToolBar(u'MapzenIsochrones')
         self.toolbar.setObjectName(u'MapzenIsochrones')
+
+
+        #Connect Form Events to Functions
+        QtCore.QObject.connect(self.dlg.radioButton, QtCore.SIGNAL('toggled()'), self.enableOne)
+        #self.dlg.radioButton.toggled.connect(self.enableOne)
+        self.dlg.radioButton_2.toggled.connect(self.enableTwo) 
+        self.dlg.radioButton_3.toggled.connect(self.enableThree) 	
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -180,11 +222,36 @@ class MapzenIsochrones:
         # remove the toolbar
         del self.toolbar
 
+		#Toggle which origin point selectors are enabled based off radioButton Selections
+    ##Select point-of-origin on map
+    def enableOne(self):
+        if self.dlg.radioButton.isChecked() == True:
+            self.dlg.pointButton.setEnabled(True)
+        else:
+            self.dlg.pointButton.setEnabled(False)	
+	##Use point later as point(s)-of-origin
+    def enableTwo(self):
+        if self.dlg.radioButton_2.isChecked() == True:
+            self.dlg.comboBox_2.setEnabled(True)
+        else:
+            self.dlg.comboBox_2.setEnabled(False)					  
+	##Input Latitude and Longitude
+    def enableThree(self):	
+        if self.dlg.radioButton_3.isChecked() == True:
+            self.dlg.lineEdit_2.setEnabled(True)
+            self.dlg.lineEdit_3.setEnabled(True)
+        else:
+            self.dlg.lineEdit_2.setEnabled(False)
+            self.dlg.lineEdit_3.setEnabled(False)	
+		
+		
+		
 
     def run(self):
         """Run method that performs all the real work"""
-	self.isochrone_gen = isochrone_gen.isochrone_gen(self.dlg)
-			
+        self.isochrone_gen = isochrone_gen.isochrone_gen(self.dlg)
+        #self.mapzen_isochrones = mapzen_isochrones.MapzenIsochrones(self.dlg)
+
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
