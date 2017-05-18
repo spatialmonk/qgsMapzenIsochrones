@@ -112,8 +112,10 @@ class isochrone_gen:
 
     #geom = QgsGeometry.fromPolygon([[QgsPoint(pt[0],pt[1])  for pt in geojson['features'][0] [0]]])
 
-	#error = QgsVectorFileWriter.writeAsVectorFormat("geojson", geojson, "utf-8", None, "GeoJSON")
-        ##Select point-of-origin on map
+    #error = QgsVectorFileWriter.writeAsVectorFormat("geojson", geojson, "utf-8", None, "GeoJSON")
+    
+    #Toggle which origin point selectors are enabled based off radioButton Selections
+    ##Select point-of-origin on map
     def enableOne(self):
         if self.dlg.radioButton.isChecked() == True:
             QgsMessageLog.logMessage("it is checked")
