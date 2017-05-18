@@ -30,15 +30,16 @@ import json
 
 
 
-
 class isochrone_gen:
     def __init__(self, dlg):
         self.dlg = dlg
         #self.dlg = MapzenIsochronesDialog()
         #self.iface = iface
-	
-	
-	
+
+        global getString
+        global getConcat
+
+
 
 
         #Clear comboBox and comboBox_2
@@ -77,24 +78,33 @@ class isochrone_gen:
 
     #SET API Parameters
         self.url = 'http://matrix.mapzen.com/isochrone?json='
-        self.api_key = self.dlg.lineEdit.text()
-        self.Latitude = self.dlg.lineEdit_2.text()
-        self.Longitude = self.dlg.lineEdit_3.text()
-        self.Minutes = self.dlg.spinBox.value()
-        self.CostModel = self.dlg.comboBox.currentText
-	
-	#Define API GET String
-	#getString = #'{"locations":[{"lat":{}{},"lon":{}}],"costing":"{}","contours":[{"time":{},"color":"ff0000"}]}&id=MapzenIsochr#one&api_key={}'.format(self.url, self.Latitude, self.Longitude, self.CostModel, self.Minutes, self.api_key)
+        #self.api_key = self.dlg.lineEdit.text()
+        #self.Latitude = self.dlg.lineEdit_2.text()
+        #self.Longitude = self.dlg.lineEdit_3.text()
+        #self.Minutes = self.dlg.spinBox.value()
+        #self.CostModel = self.dlg.comboBox.currentText
+        
+        self.api_key = 'mapzen-bhbvdDT'
+        self.Latitude = '32.734176'
+        self.Longitude = '-97.333325'
+        self.Minutes = '5'
+        self.CostModel = 'auto'
+
+
+        #Define API GET String
+        #getString = '{}{"locations":[{"lat":{}{},"lon":{}}],"costing":"{}","contours":[{"time":{},"color":"ff0000"}]}&id=MapzenIsochr#one&api_key={}'.format(self.url, self.Latitude, self.Longitude, self.CostModel, self.Minutes, self.api_key)
      
-     
+ 
+        getConcat = ''.join([self.url,'{"locations":[{"lat":', self.Latitude, ',"lon":', self.Longitude, '}],"costing":"', self.CostModel, '","contours":[{"time":', self.Minutes, ',"color":"ff0000"}]}&id=isochroneTest&api_key=', self.api_key])
+        
         getString = """http://matrix.mapzen.com/isochrone?json={"locations":[{"lat":32.734176,"lon":-97.333325}],"costing":"pedestrian","contours":[{"time":15,"color":"ff0000"}]}&id=Walk_From_Office&api_key=mapzen-bhbvdDT"""
         
         
         
-        response = requests.get(getString)
+        response = requests.get(getConcat)
         root = json.loads(response.text);
         
-        
+        QgsMessageLog.logMessage(getConcat)
         #QgsMessageLog.logMessage("response")
         QMessageBox.information(None, "DEBUG:", str(root)) 
         #QgsMessageLog.logMessage(str(root)) 
