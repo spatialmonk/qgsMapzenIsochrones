@@ -226,6 +226,7 @@ class MapzenIsochrones:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
+            self.isochrone_gen.apiCall()
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
             pass
