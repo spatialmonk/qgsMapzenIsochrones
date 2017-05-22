@@ -102,13 +102,6 @@ class MapzenIsochrones:
         self.toolbar = self.iface.addToolBar(u'MapzenIsochrones')
         self.toolbar.setObjectName(u'MapzenIsochrones')
 
-
-        #Connect Form Events to Functions
-        QtCore.QObject.connect(self.dlg.radioButton, QtCore.SIGNAL('toggled()'), self.enableOne)
-        #self.dlg.radioButton.toggled.connect(self.enableOne)
-        self.dlg.radioButton_2.toggled.connect(self.enableTwo) 
-        self.dlg.radioButton_3.toggled.connect(self.enableThree) 	
-
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
         """Get the translation for a string using Qt translation API.
@@ -222,31 +215,6 @@ class MapzenIsochrones:
         # remove the toolbar
         del self.toolbar
 
-		#Toggle which origin point selectors are enabled based off radioButton Selections
-    ##Select point-of-origin on map
-    def enableOne(self):
-        if self.dlg.radioButton.isChecked() == True:
-            self.dlg.pointButton.setEnabled(True)
-        else:
-            self.dlg.pointButton.setEnabled(False)	
-	##Use point later as point(s)-of-origin
-    def enableTwo(self):
-        if self.dlg.radioButton_2.isChecked() == True:
-            self.dlg.comboBox_2.setEnabled(True)
-        else:
-            self.dlg.comboBox_2.setEnabled(False)					  
-	##Input Latitude and Longitude
-    def enableThree(self):	
-        if self.dlg.radioButton_3.isChecked() == True:
-            self.dlg.lineEdit_2.setEnabled(True)
-            self.dlg.lineEdit_3.setEnabled(True)
-        else:
-            self.dlg.lineEdit_2.setEnabled(False)
-            self.dlg.lineEdit_3.setEnabled(False)	
-		
-		
-		
-
     def run(self):
         """Run method that performs all the real work"""
         self.isochrone_gen = isochrone_gen.isochrone_gen(self.dlg)
@@ -258,6 +226,7 @@ class MapzenIsochrones:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
+            self.isochrone_gen.apiCall()
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
             pass
