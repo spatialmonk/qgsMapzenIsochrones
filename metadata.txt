@@ -9,7 +9,7 @@
 [general]
 name=Mapzen Isochrones
 qgisMinimumVersion=2.0
-description=This plugin generates travel-time isocrhones via the Mapzen Isochrone service API
+description=This plugin generates travel-time isohrones via the Mapzen Isochrone service API
 version=0.1
 author=Ethan Monk
 email=ethangmonk@gmail.com
