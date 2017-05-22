@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>503</width>
-    <height>474</height>
+    <width>530</width>
+    <height>533</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>440</y>
+     <x>170</x>
+     <y>500</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -36,7 +36,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>160</y>
+     <y>190</y>
      <width>141</width>
      <height>22</height>
     </rect>
@@ -46,7 +46,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>160</y>
+     <y>190</y>
      <width>81</width>
      <height>16</height>
     </rect>
@@ -64,7 +64,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>260</y>
+     <y>410</y>
      <width>291</width>
      <height>17</height>
     </rect>
@@ -77,15 +77,18 @@
    <property name="text">
     <string>Select point-of-origin on map</string>
    </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QRadioButton" name="radioButton_2">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>290</y>
+     <y>440</y>
      <width>291</width>
      <height>17</height>
     </rect>
@@ -98,12 +101,15 @@
    <property name="text">
     <string>Use point layer as point(s)-of-origin</string>
    </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>120</y>
+     <y>160</y>
      <width>101</width>
      <height>16</height>
     </rect>
@@ -121,7 +127,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>120</y>
+     <y>160</y>
      <width>241</width>
      <height>20</height>
     </rect>
@@ -131,7 +137,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>200</y>
+     <y>220</y>
      <width>131</width>
      <height>16</height>
     </rect>
@@ -149,7 +155,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>310</y>
+     <y>460</y>
      <width>451</width>
      <height>22</height>
     </rect>
@@ -158,8 +164,8 @@
   <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>200</y>
+     <x>150</x>
+     <y>220</y>
      <width>42</width>
      <height>22</height>
     </rect>
@@ -168,8 +174,8 @@
   <widget class="QPushButton" name="pointButton">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>260</y>
+     <x>570</x>
+     <y>350</y>
      <width>51</width>
      <height>28</height>
     </rect>
@@ -202,8 +208,8 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>40</y>
-     <width>271</width>
+     <y>110</y>
+     <width>81</width>
      <height>16</height>
     </rect>
    </property>
@@ -213,14 +219,14 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Powered by &lt;a href=&quot;https://mapzen.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Mapzen&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Powered by:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>60</y>
+     <y>40</y>
      <width>271</width>
      <height>16</height>
     </rect>
@@ -238,7 +244,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
+     <y>60</y>
      <width>271</width>
      <height>16</height>
     </rect>
@@ -249,14 +255,14 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;ethangmonk@gmail.com&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;mailto:ethangmonk@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;ethangmonk@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QRadioButton" name="radioButton_3">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>350</y>
+     <y>290</y>
      <width>291</width>
      <height>17</height>
     </rect>
@@ -269,12 +275,15 @@
    <property name="text">
     <string>Input Latitude and Longitude (ESPG: 4326)</string>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_2">
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>380</y>
+     <y>320</y>
      <width>111</width>
      <height>20</height>
     </rect>
@@ -287,7 +296,7 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>400</y>
+     <y>340</y>
      <width>111</width>
      <height>20</height>
     </rect>
@@ -300,7 +309,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>380</y>
+     <y>320</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -318,7 +327,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>400</y>
+     <y>340</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -330,6 +339,113 @@
    </property>
    <property name="text">
     <string>Longitude (X)</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>271</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;mailto:emonk@trademarkpropertyl.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;emonk@trademarkproperty.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>110</y>
+     <width>271</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>© &lt;a href=&quot;https://www.mapzen.com/rights&quot;&gt;Mapzen&lt;/a&gt;,  &lt;a href=&quot;https://openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt;
+, and &lt;a href=&quot;https://www.mapzen.com/rights/#services-and-data-sources&quot;&gt;others&lt;/a&gt;.</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>160</y>
+     <width>271</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://www.mapzen.com&quot;&gt;&lt;span style=&quot; font-style:italic; text-decoration: underline; color:#0000ff;&quot;&gt;Get Mapzen API Key&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>250</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Layer Name</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_4">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>250</y>
+     <width>241</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Mapzen_Isochrone</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>390</y>
+     <width>201</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>IN DEVELOPMENT</string>
    </property>
   </widget>
  </widget>
