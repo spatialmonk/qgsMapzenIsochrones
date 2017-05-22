@@ -79,13 +79,15 @@ class isochrone_gen:
     ##Select point-of-origin on map
     def enableOne(self):
         if self.dlg.radioButton.isChecked() == True:
-            self.dlg.pointButton.setEnabled(True)
+            #self.dlg.pointButton.setEnabled(True)    --TEMPORARILLY UNAVAILABLE
+            self.dlg.pointButton.setEnabled(False)
         else:
                 self.dlg.pointButton.setEnabled(False)	
 	    ##Use point later as point(s)-of-origin
     def enableTwo(self):
         if self.dlg.radioButton_2.isChecked():
-            self.dlg.comboBox_2.setEnabled(True)
+            #self.dlg.comboBox_2.setEnabled(True)     --TEMPORARILLY UNAVAILABLE
+            self.dlg.comboBox_2.setEnabled(False)
         else:
             self.dlg.comboBox_2.setEnabled(False)
 	##Input Latitude and Longitude
@@ -109,13 +111,8 @@ class isochrone_gen:
         self.Longitude = self.dlg.lineEdit_3.text()
         self.Minutes = str(self.dlg.spinBox.value())
         self.CostModel = str(self.dlg.comboBox.currentText())
-        
-        #self.api_key = 'mapzen-bhbvdDT'
-        #self.Latitude = '32.734176'
-        #self.Longitude = '-97.333325'
-        #self.Minutes = '5'
-        #self.CostModel = 'auto'
-       
+        self.LayerName = self.dlg.lineEdit_4.text()
+               
         getConcat = ''.join([self.url,'{"locations":[{"lat":', self.Latitude, ',"lon":', self.Longitude, '}],"costing":"', self.CostModel, '","polygons":"true","contours":[{"time":', self.Minutes, ',"color":"ff0000"}]}&id=isochroneTest&api_key=', self.api_key])
                 
         #QgsMessageLog.logMessage(getConcat)
@@ -130,7 +127,7 @@ class isochrone_gen:
         geojson = root
     
         #Create vectory layer using getConcat API Response GEOJSON
-        vlayer = QgsVectorLayer(getConcat, "MapzenIsochrone","ogr")
+        vlayer = QgsVectorLayer(getConcat, self.LayerName,"ogr")
         #Add Isochrone to Map as Layer
         QgsMapLayerRegistry.instance().addMapLayer(vlayer)
 

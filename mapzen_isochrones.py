@@ -22,11 +22,9 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+from PyQt4.QtCore import *
 from PyQt4 import QtCore
-#from PyQt4.QtCore import *
-from PyQt4.QtGui import QAction, QIcon
-#from PyQt4.QtGui import *
+from PyQt4.QtGui import *
 # Initialize Qt resources from file resources.py
 import resources
 # Import the code for the dialog
@@ -37,7 +35,7 @@ from mapzen_isochrones_dialog import MapzenIsochronesDialog
 import os.path
 
 
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+
 from PyQt4.QtGui import QAction, QIcon
 from PyQt4 import QtCore
 from qgis.core import *
@@ -205,7 +203,17 @@ class MapzenIsochrones:
             text=self.tr(u'Mapzen Isochrones'),
             callback=self.run,
             parent=self.iface.mainWindow())
-
+         
+         #Open Links on UserForm 
+        self.dlg.label_6.linkActivated.connect(self.OpenURL)
+        self.dlg.label_9.linkActivated.connect(self.OpenURL)
+        self.dlg.label_10.linkActivated.connect(self.OpenURL)
+        self.dlg.label_11.linkActivated.connect(self.OpenURL)
+        
+    def OpenURL(self, URL): 
+        QDesktopServices().openUrl(QUrl(URL))
+		 
+		 
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
