@@ -5,10 +5,12 @@
                                  A QGIS plugin
  This plugin generates travel-time isochrones via the Mapzen Isochrone service API
                               -------------------
-        begin                : 2017-05-12
+        begin                : 2017-05-22
         git sha              : $Format:%H$
         copyright            : (C) 2017 by Ethan Monk
         email                : ethangmonk@gmail.com
+        email                : emonk@trademarkproperty.com
+		
  ***************************************************************************/
 
 /***************************************************************************
